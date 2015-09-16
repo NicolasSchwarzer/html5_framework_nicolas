@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Test</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-touch-fullscreen" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no, email=no">
+	<meta name="x5-orientation" content="portrait">
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Expires" content="0">
+</head>
+
+<style>
+	
+	body {
+		margin: 0;
+		padding: 0;
+	}
+
+	body > [data-nicolas-type="Viewport"] {
+		position: absolute;
+		/*overflow: hidden;*/
+	}
+
+	body > [data-nicolas-type="Viewport"] > div:nth-of-type(1) {
+		position: absolute;
+		top: 0;
+		left: 10%;
+		width: 80%;
+		height: 300px;
+		line-height: 300px;
+		text-align: center;
+		font-size: 72px;
+		border: 3px solid #000;
+		z-index: 999;
+		background-color: #fff;
+	}
+
+	body > [data-nicolas-type="Viewport"] > div:nth-of-type(n+2) {
+		width: 80%;
+		height: 300px;
+		line-height: 300px;
+		text-align: center;
+		font-size: 72px;
+		margin: auto;
+		border: 3px solid #000;
+	}
+	
+</style>
+
+<script type="text/javascript">
+	
+	~function() {
+
+		"use restrict";
+
+		document.addEventListener('touchstart', function() {}, false);
+
+		window.addEventListener('DOMContentLoaded', function() {
+
+			var e = document.createEvent('Event'),
+				body = document.body,
+				viewport = document.querySelector('[data-nicolas-type="Viewport"]');
+
+			body.addEventListener('touchmove', function(e) {
+				// e.preventDefault();
+			});
+
+			viewport.style.width = window.innerWidth + 'px';
+			viewport.style.height = window.innerHeight + 'px';
+
+			e.initEvent('nicolasReady', true, true);
+			this.dispatchEvent(e);
+
+		});
+
+	}();
+
+</script>
+
+<script type="text/javascript">
+	
+	~function() {
+
+		"use restrict";
+
+		window.addEventListener('nicolasReady', function() {
+
+			var domView = document.querySelector('[data-nicolas-type="Viewport"]'),
+				domHeader = domView.firstElementChild,
+				domDiv = domView.firstElementChild.nextElementSibling,
+				domText = domDiv.innerHTML,
+				child, childText;
+
+			for (var i = 0; i < 10000; i++) {
+				childText = document.createTextNode(domText);
+				child = document.createElement('div');
+				child.appendChild(childText);
+				domView.appendChild(child);
+			}
+
+			document.body.onscroll = function() {
+				domHeader.style.top = document.body.scrollTop + 'px';
+			};
+
+		});
+
+	}();
+
+</script>
+
+<body>
+
+	<div data-nicolas-type="Viewport">
+		<div>ABC</div>
+		<div>哈哈哈</div>
+	</div>
+	
+</body>
+
+</html>
