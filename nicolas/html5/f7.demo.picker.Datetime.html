@@ -24,17 +24,114 @@
     				$$ = Framework7.$,
     				dateTimePicker;
 
+                function getDayChinese(year, month, date) {
+
+                    var thisDate = new Date(year, month, date),
+                        day = thisDate.getDay();
+
+                    switch(day) {
+                        case 0:
+                            return '周日';
+                        case 1:
+                            return '周一';
+                        case 2:
+                            return '周二';
+                        case 3:
+                            return '周三';
+                        case 4:
+                            return '周四';
+                        case 5:
+                            return '周五';
+                        case 6:
+                            return '周六';
+                    }
+
+                    return '';
+
+                }
+
+                function initDateTexts() {
+
+                    var today = new Date,
+                        year = today.getFullYear(),
+                        month = today.getMonth() + 1,
+                        todayDate = today.getDate(),
+                        firstDate = 1,
+                        lastDate = (new Date(new Date(year, month, 1) - 1)).getDate(),
+                        i = firstDate,
+                        dateTexts = [];
+
+                    for (; i <= lastDate; i++) {
+                        if (i === todayDate) {
+                            dateTexts.push('今天');
+                        }
+                        else {
+                            dateTexts.push((month + '月' + i + '号  ').substr(0, 6) + '  ' + getDayChinese(year, month - 1, i));
+                        }
+                    }
+
+                    return dateTexts;
+
+                }
+
     			function getFormatValue(values) {
 
-    				var today = new Date;
+    				var today = new Date,
+                        year = today.getFullYear(),
+                        month = values[0] === '今天' ? (today.getMonth() + 1).toString() : values[0].split('月')[0],
+                        date = values[0] === '今天' ? today.getDate().toString() : values[0].split('月')[1].split('号')[0],
+                        hour = values[1] === '上午' ? (values[2] === '12' ? '0' : values[2]) : (values[2] === '12' ? values[2] : (parseInt(values[2]) + 12).toString() );
+                        time = values[3];
 
+                    return year + '-' + (month.length === 1 ? '0' + month : month) + '-' + (date.length === 1 ? '0' + date : date) + ' ' + (hour.length === 1 ? '0' + hour : hour) + ':' + time;
 
     			}
+
+                function getDefaultValue() {
+
+                    var defaultValue = [],
+                        today = new Date,
+                        hour = today.getHours(),
+                        displayHour = (hour < 12 ? hour : hour - 12).toString();
+
+                    defaultValue.push('今天');
+                    defaultValue.push(hour < 12 ? '上午' : '下午');
+                    defaultValue.push(displayHour === '0' ? '12' : displayHour);
+                    defaultValue.push('00');
+
+                    return defaultValue;
+
+                }
 
     			dateTimePicker = myApp.picker({
 
     				input: '#id-picker-datetime',
     				rotateEffect: true,
+
+                    value: getDefaultValue(),
+
+                    formatValue: function(picker, values) {
+                        return getFormatValue(values);
+                    },
+
+                    cols: [
+                        {
+                            textAlign: 'center',
+                            values: initDateTexts()
+                        },
+                        {
+                            textAlign: 'center',
+                            values: ['上午', '下午']
+                        },
+                        {
+                            textAlign: 'right',
+                            values: ['12', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11']
+                        },
+                        {
+                            textAlign: 'left',
+                            values: ['00', '15', '30', '45']
+                        }
+                    ]
 
     			});
 
@@ -53,7 +150,7 @@
 	      		<div class="item-content">
 			        <div class="item-inner">
 						<div class="item-input">
-		            		<input type="text" placeholder="Date Time" readonly id="id-picker-datetime">
+		            		<input type="text" placeholder="请选择日期和时间" readonly id="id-picker-datetime">
 		        	  	</div>
 	    		    </div>
 	      		</div>
