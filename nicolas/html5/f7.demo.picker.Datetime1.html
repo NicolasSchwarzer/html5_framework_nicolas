@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<title>Framework7 Datetime Picker</title>
+	<link rel="stylesheet" href="../frameworks/framework7-1.2.0/dist/css/framework7.ios.min.css">
+    <link rel="stylesheet" href="../frameworks/framework7-1.2.0/dist/css/framework7.ios.colors.min.css">
+    <script type="text/javascript" src="../frameworks/framework7-1.2.0/dist/js/framework7.min.js"></script>
+
+    <script type="text/javascript">
+
+    	~function() {
+
+    		"use restrict";
+
+    		window.addEventListener('DOMContentLoaded', function() {
+
+    			var myApp = new Framework7({
+	    				pushState: true
+	    			}),
+    				$$ = Framework7.$,
+    				dateTimePicker;
+
+                var i = 0, 
+                    today = new Date, date,
+                    dateValues = [], dateDisplayValues = [],
+                    defaultValue = [];
+
+                function getChineseDay(date) {
+
+                    switch(date.getDay()) {
+                        case 0:
+                            return '周日';
+                        case 1:
+                            return '周一';
+                        case 2:
+                            return '周二';
+                        case 3:
+                            return '周三';
+                        case 4:
+                            return '周四';
+                        case 5:
+                            return '周五';
+                        case 6:
+                            return '周六';
+                    }
+
+                    return '';
+
+                }
+
+                for (; i < 30; i++) {
+                    date = new Date(today.getFullYear(), today.getMonth(), today.getDate() + i);
+                    dateValues.push(i);
+                    if (i === 0) {
+                        dateDisplayValues.push('今天');
+                    }
+                    else {
+                        dateDisplayValues.push(((date.getMonth() + 1) + '月' + date.getDate() + '号  ').substr(0, 6) + '  ' + getChineseDay(date));
+                    }
+                }
+
+                defaultValue.push(0);
+                defaultValue.push(today.getHours());
+                defaultValue.push('00');
+
+    			dateTimePicker = myApp.picker({
+
+    				input: '#id-picker-datetime',
+    				rotateEffect: true,
+
+                    value: defaultValue,
+
+                    formatValue: function(picker, values) {
+
+                        var thisDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() + parseInt(values[0])),
+                            year = thisDate.getFullYear().toString(),
+                            month = (thisDate.getMonth() + 1).toString(),
+                            date = thisDate.getDate().toString(),
+                            hour = values[1].toString();
+
+                        return year + '-' + (month.length === 1 ? '0' + month : month) + '-' + (date.length === 1 ? '0' + date : date) + ' ' + (hour.length === 1 ? '0' + hour : hour) + ':' + values[2];
+
+                    },
+
+                    cols: [
+                        {
+                            textAlign: 'center',
+                            values: dateValues,
+                            displayValues: dateDisplayValues
+                        },
+                        // {
+                        //     divider: true,
+                        //     content: '&nbsp&nbsp'
+                        // },
+                        {
+                            textAlign: 'center',
+                            values: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
+                        },
+                        {
+                            divider: true,
+                            content: ':'//&nbsp&nbsp'
+                        },
+                        {
+                            textAlign: 'center',
+                            values: ['00', '15', '30', '45']
+                        }
+                    ]
+
+    			});
+
+    		});
+
+    	}();
+
+    </script>
+
+</head>
+<body>
+	<div class="content-block-title">Picker / Date-time</div>
+	<div class="list-block">
+	  	<ul>
+	    	<li>
+	      		<div class="item-content">
+			        <div class="item-inner">
+						<div class="item-input">
+		            		<input type="text" placeholder="请选择日期和时间" readonly id="id-picker-datetime">
+		        	  	</div>
+	    		    </div>
+	      		</div>
+	    	</li>
+	  	</ul>
+	</div>
+</body>
+</html>
