@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<title>Framework7 Accordion</title>
+	<link rel="stylesheet" href="../frameworks/framework7-1.2.0/dist/css/framework7.ios.min.css">
+    <link rel="stylesheet" href="../frameworks/framework7-1.2.0/dist/css/framework7.ios.colors.min.css">
+    <script type="text/javascript" src="../frameworks/framework7-1.2.0/dist/js/framework7.min.js"></script>
+
+    <script type="text/javascript">
+
+    	"use restrict";
+
+    	~function() {
+
+    		window.addEventListener('DOMContentLoaded', function() {
+
+    			var myApp = new Framework7({
+    				pushState: true
+    			});
+    				
+    			var $$ = Framework7.$;
+
+    		});
+
+    	}();
+
+    </script>
+
+</head>
+<body>
+
+	<div class="content-block-title">Separate Collapsibles</div>
+	<div class="list-block">
+	  	<ul>
+	    	<li class="accordion-item">
+	    		<a href="#" class="item-content item-link">
+	        		<div class="item-inner">
+	          			<div style="width: 100%; height: 300px"></div>
+	        		</div>
+	        	</a>
+
+	      		<div class="accordion-item-content">
+	        		<div class="content-block">
+	          			<p>Item 1 content. Lorem ipsum dolor sit amet...</p>
+	        		</div>
+	      		</div>
+	    	</li>
+
+	    	<li class="accordion-item">
+	    		<a href="#" class="item-content item-link">
+	        		<div class="item-inner">
+	          			<div class="item-title">Item 2</div>
+	        		</div>
+	        	</a>
+
+	      		<div class="accordion-item-content">
+		        	<div class="content-block">
+		          		<p>Item 2 content. Lorem ipsum dolor sit amet...</p>
+		        	</div>
+	      		</div>
+	    	</li>
+	  	</ul>
+	</div>
+
+</body>
+</html>

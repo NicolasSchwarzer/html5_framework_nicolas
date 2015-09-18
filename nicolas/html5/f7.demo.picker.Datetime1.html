@@ -52,6 +52,16 @@
 
                 }
 
+                function getFormatValue(values) {
+                    var thisDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() + parseInt(values[0])),
+                            year = thisDate.getFullYear().toString(),
+                            month = (thisDate.getMonth() + 1).toString(),
+                            date = thisDate.getDate().toString(),
+                            hour = values[1].toString();
+
+                    return year + '-' + (month.length === 1 ? '0' + month : month) + '-' + (date.length === 1 ? '0' + date : date) + ' ' + (hour.length === 1 ? '0' + hour : hour) + ':' + values[2];
+                }
+
                 for (; i < 30; i++) {
                     date = new Date(today.getFullYear(), today.getMonth(), today.getDate() + i);
                     dateValues.push(i);
@@ -67,6 +77,8 @@
                 defaultValue.push(today.getHours());
                 defaultValue.push('00');
 
+                $$('#id-picker-datetime').val(getFormatValue([0, today.getHours(), '00']));
+
     			dateTimePicker = myApp.picker({
 
     				input: '#id-picker-datetime',
@@ -75,15 +87,7 @@
                     value: defaultValue,
 
                     formatValue: function(picker, values) {
-
-                        var thisDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() + parseInt(values[0])),
-                            year = thisDate.getFullYear().toString(),
-                            month = (thisDate.getMonth() + 1).toString(),
-                            date = thisDate.getDate().toString(),
-                            hour = values[1].toString();
-
-                        return year + '-' + (month.length === 1 ? '0' + month : month) + '-' + (date.length === 1 ? '0' + date : date) + ' ' + (hour.length === 1 ? '0' + hour : hour) + ':' + values[2];
-
+                        return getFormatValue(values);
                     },
 
                     cols: [
