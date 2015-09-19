@@ -1,0 +1,29 @@
+html, body {
+	font-family: sans-serif;
+	font-weight: normal;
+}
+
+html, body,
+h1, h2, h3, h4, h5, h6,
+header, article, section, nav, div, footer,
+form,
+input, textarea,
+button {
+	margin: 0;
+	padding: 0;
+}
+
+img,
+input, textarea,
+button {
+	border: 0;
+}
+
+*:focus {
+	outline: none;
+}
+
+input, textarea {
+	font-family: inherit;
+    font-size: inherit;
+}
