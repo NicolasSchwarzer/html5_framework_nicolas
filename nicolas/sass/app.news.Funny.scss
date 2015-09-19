@@ -1,0 +1,153 @@
+@import "_Lib.Font.Awesome";
+@import "_Lib.Reset";
+@import "_Lib.Element.Init";
+@import "_Lib.Element.Viewport";
+
+$titleHeight: 40px;
+$totalTitleHeight: 120px;
+
+@keyframes header-expand-animation {
+
+	from {
+
+		height: $titleHeight;
+
+	}
+
+	to {
+
+		height: $totalTitleHeight;
+
+	}
+
+}
+
+@keyframes header-collapse-animation {
+
+	from {
+
+		height: $totalTitleHeight;
+
+	}
+
+	to {
+
+		height: $titleHeight;
+
+	}
+
+}
+
+@keyframes controller-expand-animation {
+
+	from {
+
+		transform: rotate(0);
+
+	}
+
+	to {
+
+		transform: rotate(90deg);
+
+	}
+
+}
+
+@keyframes controller-collapse-animation {
+
+	from {
+
+		transform: rotate(90deg);
+
+	}
+
+	to {
+
+		transform: rotate(0);
+
+	}
+
+}
+
+[data-nicolas-type="Viewport"] {
+
+	>header {
+
+		width: 100%;
+		height: $titleHeight;
+		background-color: #e03b3b;
+		color: #fff;
+		text-align: center;
+		font-size: 16px;
+		font-weight: 200;
+		overflow: hidden;
+
+		&.expanded {
+
+			height: $totalTitleHeight;
+
+		}
+
+		&.expand-animation {
+
+			animation: header-expand-animation 0.5s;
+
+		}
+
+		&.collapse-animation {
+
+			animation: header-collapse-animation 0.5s;
+
+		}
+
+		>div {
+
+			float: left;
+			width: 16.66%;
+			height: $titleHeight;
+			line-height: $titleHeight;
+
+			&.header-expand-collapse-controller {
+
+				transform-origin: center center;
+
+				&.expanded {
+
+					transform: rotate(90deg);
+
+				}
+
+			}
+
+			&.header-expand-collapse-controller:before {
+
+				font-family: FontAwesome;
+				content: '\f054';
+
+			}
+
+			&.selected {
+
+				font-size: 18px;
+				font-weight: 600;
+
+			}
+
+			&.expand-animation {
+
+				animation: controller-expand-animation 0.5s;
+
+			}
+
+			&.collapse-animation {
+
+				animation: controller-collapse-animation 0.5s;
+
+			}
+
+		}
+
+	}
+
+}

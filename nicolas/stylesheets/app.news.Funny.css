@@ -1,0 +1,146 @@
+@font-face {
+  font-family: 'FontAwesome';
+  src: url("../frameworks/font-awesome-4.4.0/fontawesome-webfont.eot?v=4.4.0");
+  src: url("../frameworks/font-awesome-4.4.0/fontawesome-webfont.eot?#iefix&v=4.4.0") format("embedded-opentype"), url("../frameworks/font-awesome-4.4.0/fontawesome-webfont.woff2?v=4.4.0") format("woff2"), url("../frameworks/font-awesome-4.4.0/fontawesome-webfont.woff?v=4.4.0") format("woff"), url("../frameworks/font-awesome-4.4.0/fontawesome-webfont.ttf?v=4.4.0") format("truetype"), url("../frameworks/font-awesome-4.4.0/fontawesome-webfont.svg?v=4.4.0#fontawesomeregular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+/* line 1, ../sass/_Lib.Reset.scss */
+html, body {
+  font-family: sans-serif;
+  font-weight: normal;
+}
+
+/* line 6, ../sass/_Lib.Reset.scss */
+html, body,
+h1, h2, h3, h4, h5, h6,
+header, article, section, nav, div, footer,
+form,
+input, textarea,
+button {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 16, ../sass/_Lib.Reset.scss */
+img,
+input, textarea,
+button {
+  border: 0;
+}
+
+/* line 22, ../sass/_Lib.Reset.scss */
+*:focus {
+  outline: none;
+}
+
+/* line 26, ../sass/_Lib.Reset.scss */
+input, textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* line 1, ../sass/_Lib.Element.Init.scss */
+body {
+  opacity: 0;
+}
+/* line 3, ../sass/_Lib.Element.Init.scss */
+body.ready {
+  opacity: 1;
+}
+
+/* line 1, ../sass/_Lib.Element.Viewport.scss */
+[data-nicolas-type="Viewport"] {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+@keyframes header-expand-animation {
+  from {
+    height: 40px;
+  }
+  to {
+    height: 120px;
+  }
+}
+@keyframes header-collapse-animation {
+  from {
+    height: 120px;
+  }
+  to {
+    height: 40px;
+  }
+}
+@keyframes controller-expand-animation {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(90deg);
+  }
+}
+@keyframes controller-collapse-animation {
+  from {
+    transform: rotate(90deg);
+  }
+  to {
+    transform: rotate(0);
+  }
+}
+/* line 75, ../sass/app.news.Funny.scss */
+[data-nicolas-type="Viewport"] > header {
+  width: 100%;
+  height: 40px;
+  background-color: #e03b3b;
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 200;
+  overflow: hidden;
+}
+/* line 86, ../sass/app.news.Funny.scss */
+[data-nicolas-type="Viewport"] > header.expanded {
+  height: 120px;
+}
+/* line 92, ../sass/app.news.Funny.scss */
+[data-nicolas-type="Viewport"] > header.expand-animation {
+  animation: header-expand-animation 0.5s;
+}
+/* line 98, ../sass/app.news.Funny.scss */
+[data-nicolas-type="Viewport"] > header.collapse-animation {
+  animation: header-collapse-animation 0.5s;
+}
+/* line 104, ../sass/app.news.Funny.scss */
+[data-nicolas-type="Viewport"] > header > div {
+  float: left;
+  width: 16.66%;
+  height: 40px;
+  line-height: 40px;
+}
+/* line 111, ../sass/app.news.Funny.scss */
+[data-nicolas-type="Viewport"] > header > div.header-expand-collapse-controller {
+  transform-origin: center center;
+}
+/* line 115, ../sass/app.news.Funny.scss */
+[data-nicolas-type="Viewport"] > header > div.header-expand-collapse-controller.expanded {
+  transform: rotate(90deg);
+}
+/* line 123, ../sass/app.news.Funny.scss */
+[data-nicolas-type="Viewport"] > header > div.header-expand-collapse-controller:before {
+  font-family: FontAwesome;
+  content: '\f054';
+}
+/* line 130, ../sass/app.news.Funny.scss */
+[data-nicolas-type="Viewport"] > header > div.selected {
+  font-size: 18px;
+  font-weight: 600;
+}
+/* line 137, ../sass/app.news.Funny.scss */
+[data-nicolas-type="Viewport"] > header > div.expand-animation {
+  animation: controller-expand-animation 0.5s;
+}
+/* line 143, ../sass/app.news.Funny.scss */
+[data-nicolas-type="Viewport"] > header > div.collapse-animation {
+  animation: controller-collapse-animation 0.5s;
+}
