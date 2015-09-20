@@ -75,20 +75,36 @@ body.ready {
 @keyframes controller-expand-animation {
   from {
     transform: rotate(0);
+    -web-kit-transform: rotate(0);
+    -moz-transform: rotate(0);
+    -o-transform: rotate(0);
+    -ms-transform: rotate(0);
   }
   to {
     transform: rotate(90deg);
+    -web-kit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
   }
 }
 @keyframes controller-collapse-animation {
   from {
     transform: rotate(90deg);
+    -web-kit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
   }
   to {
     transform: rotate(0);
+    -web-kit-transform: rotate(0);
+    -moz-transform: rotate(0);
+    -o-transform: rotate(0);
+    -ms-transform: rotate(0);
   }
 }
-/* line 75, ../sass/app.news.Funny.scss */
+/* line 95, ../sass/app.news.Funny.scss */
 [data-nicolas-type="Viewport"] > header {
   width: 100%;
   height: 40px;
@@ -99,48 +115,56 @@ body.ready {
   font-weight: 200;
   overflow: hidden;
 }
-/* line 86, ../sass/app.news.Funny.scss */
+/* line 106, ../sass/app.news.Funny.scss */
 [data-nicolas-type="Viewport"] > header.expanded {
   height: 120px;
 }
-/* line 92, ../sass/app.news.Funny.scss */
+/* line 112, ../sass/app.news.Funny.scss */
 [data-nicolas-type="Viewport"] > header.expand-animation {
   animation: header-expand-animation 0.5s;
 }
-/* line 98, ../sass/app.news.Funny.scss */
+/* line 118, ../sass/app.news.Funny.scss */
 [data-nicolas-type="Viewport"] > header.collapse-animation {
   animation: header-collapse-animation 0.5s;
 }
-/* line 104, ../sass/app.news.Funny.scss */
+/* line 124, ../sass/app.news.Funny.scss */
 [data-nicolas-type="Viewport"] > header > div {
   float: left;
   width: 16.66%;
   height: 40px;
   line-height: 40px;
 }
-/* line 111, ../sass/app.news.Funny.scss */
+/* line 131, ../sass/app.news.Funny.scss */
 [data-nicolas-type="Viewport"] > header > div.header-expand-collapse-controller {
   transform-origin: center center;
+  -webkit-transform-origin: center center;
+  -moz-transform-origin: center center;
+  -o-transform-origin: center center;
+  -ms-transform-origin: center center;
 }
-/* line 115, ../sass/app.news.Funny.scss */
+/* line 135, ../sass/app.news.Funny.scss */
 [data-nicolas-type="Viewport"] > header > div.header-expand-collapse-controller.expanded {
   transform: rotate(90deg);
+  -web-kit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
 }
-/* line 123, ../sass/app.news.Funny.scss */
+/* line 141, ../sass/app.news.Funny.scss */
+[data-nicolas-type="Viewport"] > header > div.header-expand-collapse-controller.expand-animation {
+  animation: controller-expand-animation 0.5s;
+}
+/* line 147, ../sass/app.news.Funny.scss */
+[data-nicolas-type="Viewport"] > header > div.header-expand-collapse-controller.collapse-animation {
+  animation: controller-collapse-animation 0.5s;
+}
+/* line 155, ../sass/app.news.Funny.scss */
 [data-nicolas-type="Viewport"] > header > div.header-expand-collapse-controller:before {
   font-family: FontAwesome;
   content: '\f054';
 }
-/* line 130, ../sass/app.news.Funny.scss */
+/* line 162, ../sass/app.news.Funny.scss */
 [data-nicolas-type="Viewport"] > header > div.selected {
   font-size: 18px;
   font-weight: 600;
-}
-/* line 137, ../sass/app.news.Funny.scss */
-[data-nicolas-type="Viewport"] > header > div.expand-animation {
-  animation: controller-expand-animation 0.5s;
-}
-/* line 143, ../sass/app.news.Funny.scss */
-[data-nicolas-type="Viewport"] > header > div.collapse-animation {
-  animation: controller-collapse-animation 0.5s;
 }
