@@ -9,6 +9,12 @@
 		viewport.style.width = windowEl.innerWidth + 'px';
 		viewport.style.height = windowEl.innerHeight + 'px';
 
+		document.body.addEventListener('touchmove', function(e) {
+
+			e.preventDefault();
+
+		});
+
 		e.initEvent('nicolasReady', true, true);
 		windowEl.dispatchEvent(e);
 

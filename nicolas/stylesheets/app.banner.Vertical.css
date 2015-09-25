@@ -1,0 +1,75 @@
+/* line 1, ../sass/_Lib.Element.Init.scss */
+body {
+  opacity: 0;
+}
+/* line 3, ../sass/_Lib.Element.Init.scss */
+body.ready {
+  opacity: 1;
+}
+
+/* line 1, ../sass/_Lib.Element.Viewport.scss */
+[data-nicolas-type="Viewport"] {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* line 1, ../sass/_Lib.Reset.scss */
+html, body {
+  font-family: sans-serif;
+  font-weight: normal;
+}
+
+/* line 6, ../sass/_Lib.Reset.scss */
+html, body,
+h1, h2, h3, h4, h5, h6,
+header, article, section, nav, div, footer,
+form,
+input, textarea,
+button {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 16, ../sass/_Lib.Reset.scss */
+img,
+input, textarea,
+button {
+  border: 0;
+}
+
+/* line 22, ../sass/_Lib.Reset.scss */
+*:focus {
+  outline: none;
+}
+
+/* line 26, ../sass/_Lib.Reset.scss */
+input, textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* line 9, ../sass/app.banner.Vertical.scss */
+[data-nicolas-type="Viewport"] > article {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+/* line 15, ../sass/app.banner.Vertical.scss */
+[data-nicolas-type="Viewport"] > article > article {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 100%;
+  z-index: 1;
+}
+/* line 23, ../sass/app.banner.Vertical.scss */
+[data-nicolas-type="Viewport"] > article > article.is-current-slide {
+  z-index: 0;
+}
+/* line 29, ../sass/app.banner.Vertical.scss */
+[data-nicolas-type="Viewport"] > article > article.sliding {
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}

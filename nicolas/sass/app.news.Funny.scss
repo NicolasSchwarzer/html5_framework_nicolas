@@ -43,13 +43,13 @@ $totalTitleHeight: 120px;
 
 	from {
 
-		@include transformRotate(0);
+		@include transform-rotate(0);
 
 	}
 
 	to {
 
-		@include transformRotate(90deg);
+		@include transform-rotate(90deg);
 
 	}
 
@@ -59,13 +59,13 @@ $totalTitleHeight: 120px;
 
 	from {
 
-		@include transformRotate(90deg);
+		@include transform-rotate(90deg);
 
 	}
 
 	to {
 
-		@include transformRotate(0);
+		@include transform-rotate(0);
 
 	}
 
@@ -111,11 +111,11 @@ $totalTitleHeight: 120px;
 
 			&.header-expand-collapse-controller {
 
-				@include transformOrigin(center center);
+				@include transform-origin(center center);
 
 				&.expanded {
 
-					@include transformRotate(90deg);
+					@include transform-rotate(90deg);
 
 				}
 

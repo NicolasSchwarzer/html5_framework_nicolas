@@ -1,0 +1,39 @@
+@import "_Lib.Element.Init";
+@import "_Lib.Element.Viewport";
+@import "_Lib.Reset";
+@import "_Lib.Transform";
+@import "_Lib.Transition";
+
+[data-nicolas-type="Viewport"] {
+	
+	>article {
+
+		position: relative;
+		width: 100%;
+		height: 100%;
+
+		>article {
+
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 100%;
+			z-index: 1;
+
+			&.is-current-slide {
+
+				z-index: 0;
+
+			}
+			
+			&.sliding {
+
+				@include transition-duration(0.5s);
+
+			}
+
+		}
+
+	}
+
+}
