@@ -12,7 +12,9 @@
 				return slide.previousElementSibling;
 			}
 			else {
-				return slide.parentElement.lastElementChild;
+				var previousSlide = slide.parentElement.lastElementChild;
+
+				return previousSlide === slide ? null : previousSlide;
 			}
 
 		}
@@ -23,7 +25,9 @@
 				return slide.nextElementSibling;
 			}
 			else {
-				return slide.parentElement.firstElementChild;
+				var nextSlide = slide.parentElement.firstElementChild;
+
+				return nextSlide === slide ? null : nextSlide;
 			}
 
 		}
