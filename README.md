@@ -1,3 +1,6 @@
+Requires
+	Latest Node.js & Compass
+
 nicolas-1.1
 	Only for html5 pages on iPhone (IOS7 & above) and Android (Android 4.4.4 & above).
 
