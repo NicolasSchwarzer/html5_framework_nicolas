@@ -61,4 +61,4 @@ Array.unique = function(data) {
 	}
 
 	return result;
-}
+};

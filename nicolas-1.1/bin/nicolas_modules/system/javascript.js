@@ -1,37 +1,56 @@
 var fs = require('fs'),
-	path = module.paths[0].replace(/bin\/nicolas_modules\/system\/node_modules$/, 'system\/javascripts\/'),
+	path = require('../path'),
+	basePath = path.systemJavascriptsPath(),
 	exports = module.exports;
 
-function schema() {
+function getFilePaths() {
 
-	var schemaPath = path + 'SCHEMA.json';
-
-	return JSON.parse(fs.readFileSync(schemaPath));
-}
-
-function files() {
-
-	var keys = schema(),
-		i = 0, length = keys.length,
+	var names = fs.readdirSync(basePath), name,
+		configs = JSON.parse(fs.readFileSync(basePath + 'SCHEMA.json')), cfg,
+		reg = /\*/g,
 		result = [];
 
-	for (; i < length; ++i) {
+	for (var i = 0; i < configs.length; ++i) {
 
-		result.push(path + keys[i] + '.js');
+		cfg = configs[i];
+
+		if (reg.test(cfg)) {
+
+			cfg = cfg.replace(reg, '');
+
+			for (var j = 0; j < names.length; ++j) {
+
+				name = names[j];
+
+				if (name.search(cfg) === 0) {
+
+					result.push(basePath + name);
+				}
+			}
+		}
+		else {
+
+			cfg += '.js';
+
+			if (names.indexOf(cfg) !== -1) {
+
+				result.push(basePath + cfg);
+			}
+		}
 	}
 
-	return result;
+	return path.uniquePaths(result);
 }
 
 exports.data = function() {
 
-	var dirs = files(),
-		i = 0, length = dirs.length,
+	var paths = getFilePaths(),
+		i = 0, length = paths.length,
 		result = [];
 
 	for (; i < length; ++i) {
 
-		result.push(fs.readFileSync(dirs[i]));
+		result.push(fs.readFileSync(paths[i]));
 	}
 
 	return result.join('\n');
