@@ -1,4 +1,5 @@
 var fs = require('fs'),
+	childProcess = require('child_process'),
 	path = require('./path'),
 	exports = module.exports;
 
@@ -18,7 +19,7 @@ exports.compile = function(data) {
 
 	fs.writeFileSync(dest + '.nicolas-compass/css3/' + name + '.scss', data);
 
-	require('child_process').execSync('compass compile ' + dest + '.nicolas-compass/');
+	childProcess.execSync('compass compile ' + dest + '.nicolas-compass/');
 
 	return fs.readFileSync(dest + '.nicolas-compass/stylesheets/' + name + '.css');
 }
