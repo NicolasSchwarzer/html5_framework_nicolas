@@ -1,9 +1,15 @@
-var systemJavascript = require('./nicolas_modules/system/javascript');
+var systemCSS3 = require('./nicolas_modules/system/css3'),
+	systemJavascript = require('./nicolas_modules/system/javascript'),
+	path = require('./nicolas_modules/path'),
+	compass = require('./nicolas_modules/compass'),
+	fs = require('fs');
 
-console.log(systemJavascript.data());
+function writeTestingDir() {
 
-// var path = require('./nicolas_modules/path');
+	var testingPath = path.buildTestingPath();
 
-// console.log(path.systemCSS3Path());
-// console.log(path.systemStylesheetsPath());
-// console.log(path.systemJavascriptsPath());
+	fs.writeFileSync(testingPath + 'test.css', compass.compile(systemCSS3.data()));
+	fs.writeFileSync(testingPath + 'test.js', systemJavascript.data());
+}
+
+writeTestingDir();
