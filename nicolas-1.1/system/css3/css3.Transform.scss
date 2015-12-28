@@ -1,0 +1,11 @@
+@mixin transform-origin($origin: center center) {
+	
+	-webkit-transform-origin: $origin;
+	transform-origin: $origin;
+}
+
+@mixin transform($config) {
+	
+	-webkit-transform: $config;
+	transform: $config;
+}
