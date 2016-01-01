@@ -1,0 +1,9 @@
+/*
+	可以引入其它框架css
+*/
+
+img {
+
+	-webkit-border-radius: 0;
+	border-radius: 0;
+}
