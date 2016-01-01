@@ -162,12 +162,27 @@ exports.systemCSS3Path = function() {
 	return basePath + '/system/css3/';
 };
 
-exports.systemStylesheetsPath = function() {
-
-	return basePath + '/system/stylesheets/';
-};
-
 exports.systemJavascriptsPath = function() {
 
 	return basePath + '/system/javascripts/';
 };
+
+exports.applicationsHTML5Path = function() {
+
+	return basePath + '/applications/html5/';
+};
+
+exports.applicationsCSS3Path = function() {
+
+	return basePath + '/applications/css3/';
+};
+
+exports.applicationsJavascriptsPath = function() {
+
+	return basePath + '/applications/javascripts/';
+};
+
+exports.applicationsResourcesPath = function() {
+
+	return basePath + '/applications/resources/';
+}
