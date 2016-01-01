@@ -3,17 +3,14 @@ html, body{
     font-family: sans-serif;
     font-weight: normal;
     @include text-size-adjust;
-    position: relative;
-    height: 100%;
 }
 
 body{
 
-    overflow: hidden;
     cursor: default;
 }
 
-html, body, div, header, article, section, nav, footer,
+html, body, div,
 input, textarea,
 h1, h2, h3, h4, h5, h6,
 dialog, p,
