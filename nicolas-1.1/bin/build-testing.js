@@ -12,6 +12,10 @@ var systemCSS3 = require('./nicolas_modules/system/css3'),
 
 	name = process.argv.slice()[2];
 
+require('./nicolas_modules/format');
+
+name = String.standardizePageName(name);
+
 function writeTestingDir(name) {
 
 	var pagePath = path.applicationsHTML5Path();
