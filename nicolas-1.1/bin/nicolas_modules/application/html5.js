@@ -3,6 +3,20 @@ var fs = require('fs'),
 	jsdom = require('jsdom').jsdom,
 	exports = module.exports;
 
+require('../array');
+
+function setupComponents(node) {
+
+	var name = node.getAttribute('data-nicolas-component');
+
+	if (node.tagName === 'DIV' && name) {
+
+		console.log(name);
+	}
+
+	Array.forEach(node.children, setupComponents);
+}
+
 function generateHTML5Head(name, headNode) {
 
 	var doc = headNode.ownerDocument,
@@ -55,6 +69,8 @@ function generateHTML5Head(name, headNode) {
 }
 
 function generateHTML5Body(name, bodyNode) {
+
+	setupComponents(bodyNode);
 
 	return bodyNode.outerHTML;
 }
