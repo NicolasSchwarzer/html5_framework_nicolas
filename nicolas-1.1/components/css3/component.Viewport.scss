@@ -1,0 +1,17 @@
+html, body {
+	
+	position: relative;
+	height: 100%;
+}
+
+body {
+	
+	overflow: hidden;
+}
+
+body > div[data-nicolas-component="Viewport"] {
+	
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}

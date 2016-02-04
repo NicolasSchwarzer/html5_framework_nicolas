@@ -10,7 +10,8 @@ var systemCSS3 = require('./nicolas_modules/system/css3'),
 	compass = require('./nicolas_modules/compass'),
 	fs = require('fs'),
 
-	name = process.argv.slice()[2];
+	componentReg = /^component/,
+	name = process.argv[2];
 
 require('./nicolas_modules/format');
 
@@ -22,7 +23,7 @@ function writeTestingDir(name) {
 
 	if (!path.isFile(pagePath + name + '.html')) {
 
-		console.log('页面 ' + name + ' 不存在');
+		console.log('Error: 页面 ' + name + ' 不存在');
 
 		return;
 	}
@@ -41,6 +42,13 @@ function writeTestingDir(name) {
 	applicationResource.transferResources(name, true);
 
 	console.log('页面 ' + name + ' 编译完成');
+}
+
+if (componentReg.test(name)) {
+
+	console.log('Error: 请编译页面');
+
+	return;
 }
 
 writeTestingDir(name);
