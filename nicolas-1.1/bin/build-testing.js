@@ -11,7 +11,7 @@ var systemCSS3 = require('./nicolas_modules/system/css3'),
 	componentReg = /^component/,
 	name = process.argv[2];
 
-require('./nicolas_modules/format');
+require('./nicolas_modules/string');
 
 function writeTestingDir(name) {
 

@@ -1,9 +1,7 @@
 var fs = require('fs'),
 	exports = module.exports,
-
 	paths = module.paths[0].split(/\//),
-	length = paths.length, i = 0;
-
+	length = paths.length, i = 0,
 	basePath = [];
 
 while (true) {

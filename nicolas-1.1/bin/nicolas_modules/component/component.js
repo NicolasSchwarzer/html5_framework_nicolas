@@ -2,13 +2,12 @@ var exports = module.exports,
 	fs = require('fs'),
 	path = require('../path'),
 	jsdom = require('jsdom').jsdom,
-
 	htmlPath = path.componentHTML5Path(),
 	cssPath = path.componentCSS3Path(),
 	javascriptPath = path.componentJavascriptsPath(),
 	resourcePath = path.componentResourcesPath();
 
-require('../format');
+require('../string');
 require('../array');
 
 function pushNames(names, node) {

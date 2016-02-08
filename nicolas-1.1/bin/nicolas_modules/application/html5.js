@@ -4,7 +4,7 @@ var fs = require('fs'),
 	component = require('../component/component'),
 	exports = module.exports;
 
-require('../format');
+require('../string');
 require('../array');
 
 function setupComponents(node) {
