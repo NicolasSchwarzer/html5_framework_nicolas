@@ -167,6 +167,26 @@ exports.systemJavascriptsPath = function() {
 	return basePath + '/system/javascripts/';
 };
 
+exports.componentHTML5Path = function() {
+
+	return basePath + '/components/html5/';
+};
+
+exports.componentCSS3Path = function() {
+
+	return basePath + '/components/css3/';
+};
+
+exports.componentJavascriptsPath = function() {
+
+	return basePath + '/components/javascripts/';
+};
+
+exports.componentResourcesPath = function() {
+
+	return basePath + '/components/resources/';
+};
+
 exports.applicationsHTML5Path = function() {
 
 	return basePath + '/applications/html5/';

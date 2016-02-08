@@ -1,6 +1,7 @@
 var fs = require('fs'),
 	path = require('../path'),
 	jsdom = require('jsdom').jsdom,
+	component = require('../component/component'),
 	exports = module.exports;
 
 require('../array');
@@ -11,7 +12,17 @@ function setupComponents(node) {
 
 	if (node.tagName === 'DIV' && name) {
 
-		console.log(name);
+		var compNode = component.getComponentHTML(name);
+
+		if (compNode && (compNode = compNode.querySelector('body'))) {
+
+			var containerCfg = compNode.getAttribute('container'),
+				containerNode = containerCfg === '.' ? compNode : compNode.querySelector(containerCfg);
+
+			containerNode.innerHTML = node.innerHTML;
+
+			node.innerHTML = compNode.innerHTML;
+		}
 	}
 
 	Array.forEach(node.children, setupComponents);

@@ -15,7 +15,7 @@ var systemCSS3 = require('./nicolas_modules/system/css3'),
 
 require('./nicolas_modules/format');
 
-name = String.standardizePageName(name);
+name = String.standardizeName(name);
 
 function writeTestingDir(name) {
 

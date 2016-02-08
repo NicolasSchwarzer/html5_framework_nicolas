@@ -1,4 +1,4 @@
-String.standardizePageName = function(name) {
+String.standardizeName = function(name) {
 
 	var names = name.split(/\./), value,
 		i = 0, length = names.length,
