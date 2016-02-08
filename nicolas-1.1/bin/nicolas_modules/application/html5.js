@@ -4,6 +4,7 @@ var fs = require('fs'),
 	component = require('../component/component'),
 	exports = module.exports;
 
+require('../format');
 require('../array');
 
 function setupComponents(node) {
@@ -19,9 +20,15 @@ function setupComponents(node) {
 			var containerCfg = compNode.getAttribute('container'),
 				containerNode = containerCfg === '.' ? compNode : compNode.querySelector(containerCfg);
 
+			node.setAttribute('data-nicolas-component', String.standardizeName(name));
+
 			containerNode.innerHTML = node.innerHTML;
 
 			node.innerHTML = compNode.innerHTML;
+		}
+		else {
+
+			node.removeAttribute('data-nicolas-component');
 		}
 	}
 

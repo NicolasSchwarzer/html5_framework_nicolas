@@ -1,21 +1,17 @@
 var systemCSS3 = require('./nicolas_modules/system/css3'),
 	systemJavascript = require('./nicolas_modules/system/javascript'),
-
+	component = require('./nicolas_modules/component/component'),
 	applicationHTML5 = require('./nicolas_modules/application/html5'),
 	applicationCSS3 = require('./nicolas_modules/application/css3'),
 	applicationJavascript = require('./nicolas_modules/application/javascript'),
 	applicationResource = require('./nicolas_modules/application/resource'),
-
 	path = require('./nicolas_modules/path'),
 	compass = require('./nicolas_modules/compass'),
 	fs = require('fs'),
-
 	componentReg = /^component/,
 	name = process.argv[2];
 
 require('./nicolas_modules/format');
-
-name = String.standardizeName(name);
 
 function writeTestingDir(name) {
 
@@ -28,21 +24,41 @@ function writeTestingDir(name) {
 		return;
 	}
 
-	var testingPath = path.buildTestingPath() + name;
+	var testingPath = path.buildTestingPath(),
+		testingFilePath = testingPath + name,
+		html5Data = applicationHTML5.data(name),
+		compName, compNames = component.getComponentNames(html5Data),
+		i = 0, length = compNames.length,
+		css3Data = [systemCSS3.data()],
+		javascriptData = [systemJavascript.data()];
 
-	fs.writeFileSync(testingPath + '.html', applicationHTML5.data(name));
+	for (; i < length; ++i) {
 
-	fs.writeFileSync(testingPath + '.css', compass.compile([systemCSS3.data(),
-															applicationCSS3.data(name)
-															].join('\n')));
+		compName = compNames[i];
 
-	fs.writeFileSync(testingPath + '.js', [systemJavascript.data(),
-										   applicationJavascript.data(name)].join('\n'));
+		css3Data.push(component.getComponentCSS(compName));
+
+		javascriptData.push(component.getComponentJavascript(compName));
+
+		component.copyResources(compName, testingPath);
+	}
+
+	css3Data.push(applicationCSS3.data(name));
+
+	javascriptData.push(applicationJavascript.data(name));
+
+	fs.writeFileSync(testingFilePath + '.html', html5Data);
+
+	fs.writeFileSync(testingFilePath + '.css', compass.compile(css3Data.join('\n')));
+
+	fs.writeFileSync(testingFilePath + '.js', javascriptData.join('\n'));
 
 	applicationResource.transferResources(name, true);
 
 	console.log('页面 ' + name + ' 编译完成');
 }
+
+name = String.standardizeName(name);
 
 if (componentReg.test(name)) {
 
