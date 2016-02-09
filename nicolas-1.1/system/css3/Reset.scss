@@ -1,11 +1,11 @@
-html, body{
+html, body {
 
     font-family: sans-serif;
     font-weight: normal;
     @include text-size-adjust;
 }
 
-body{
+body {
 
     cursor: default;
 }
@@ -14,18 +14,18 @@ html, body, div,
 input, textarea,
 h1, h2, h3, h4, h5, h6,
 dialog, p,
-form{
+form {
 
     margin: 0;
     padding: 0;
 }
 
-dialog{
+dialog {
 
     background-color: #fff;
 }
 
-img{
+img {
 
     border: 0;
 }
@@ -47,7 +47,7 @@ input, textarea, select {
     font-weight: inherit;
 }
 
-textarea{
+textarea {
 
     resize: none;
 }
