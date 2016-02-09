@@ -1,58 +1,82 @@
 /**
- * 将类数组数据转换成数组数据
- * @param	{Object}	data				类数组
- * @param	{Number}	start	(optional)	起始下标, 默认为0
- * @return	{Array}
+ *
+ * @author Nicolas Wan
+ *
+ * Array API
+ *
+ * public static Array from(Array data);
+ *
+ * public static Mixed|undefined forEach(Mixed[] data, Function func [, Mixed param1 [, ...[, Mixed paramN]]]);
+ *
+ * public static Array join([Mixed param1 [, ...[, Mixed paramN]]]);
+ *
+ * public static Array unique(Array data);
+ *
+ * public static Boolean push(Array data, Mixed item);
+ *
+ * public static Boolean remove(Array data, Mixed item);
+ *
+ * public static Boolean removeAll(Mixed data);
+ *
  * */
-Array.toArray = function(data, start) {
 
-	var i = start || 0, length = data.length,
-		result = [];
+~function() {
 
-	for (; i < length; ++i) {
+	if (!('from' in Array)) {
 
-		result.push(data[i]);
+		Array.from = function(data) {
+
+			var i = 0, length = data.length,
+				result = [];
+
+			for (; i < length; ++i) {
+
+				result.push(data[i]);
+			}
+
+			return result;
+		};
 	}
 
-	return result;
-};
+	Array.forEach = function(data, func) {
 
-/**
- * 循环遍历数组
- * @param	{Array}		data	数组
- * @param	{Function}	func 	回调函数
- * @return	{Boolean}
- * */
-Array.forEach = function(data, func) {
+		var i = 0, length = data.length,
+			args = Array.from(arguments),
+			start, result;
 
-	var i = 0, length = data.length,
-		args = Array.toArray(arguments).slice(2);
+		args.splice(0, 2);
+		args.splice(start = args.length, 0, 1, 2, 3);
+		
+		for (; i < length; ++i) {
 
-	for (; i < length; ++i) {
+			args[start] = data[i];
+			args[start + 1] = i;
+			args[start + 2] = data;
 
-		if (func(data[i], i, data, args) === false) {
+			result = func.apply(undefined, args);
 
-			return false;
+			if (result !== undefined) {
+
+				return result;
+			}
 		}
+	};
+
+	function join(result, item) {
+
+		Array.push(result, item);
 	}
 
-	return true;
-};
+	Array.join = function() {
 
-/**
- * 删除数组重复项
- * @param	{Array}	data	数组
- * @return	{Array}
- * */
-Array.unique = function(data) {
+		var result = [];
 
-	var i = 0, length = data.length,
-		item,
-		result = [];
+		Array.forEach(arguments, join, result);
 
-	for (; i < length; ++i) {
+		return result;
+	};
 
-		item = data[i];
+	function unique(result, item) {
 
 		if (result.indexOf(item) === -1) {
 
@@ -60,5 +84,88 @@ Array.unique = function(data) {
 		}
 	}
 
-	return result;
-};
+	Array.unique = function(data) {
+
+		var result = [];
+
+		Array.forEach(data, unique, result);
+
+		return result;
+	};
+
+	function push(data, item) {
+
+		Array.push(data, item);
+	}
+
+	Array.push = function(data, item) {
+
+		if (item instanceof Array) {
+
+			var oldLength = data.length;
+
+			Array.forEach(item, push, data);
+
+			if (data.length > oldLength) {
+
+				return true;
+			}
+		}
+		else {
+
+			if (data.indexOf(item) === -1) {
+
+				data.push(item);
+
+				return true;
+			}
+		}
+
+		return false;
+	};
+
+	function remove(data, item) {
+
+		Array.remove(data, item);
+	}
+
+	Array.remove = function(data, item) {
+
+		if (item instanceof Array) {
+
+			var oldLength = data.length;
+
+			Array.forEach(item, remove, data);
+
+			if (data.length < oldLength) {
+
+				return true;
+			}
+
+			return false;
+		}
+		
+		var index, result = false;
+
+		while ((index = data.indexOf(item)) !== -1) {
+
+			data.splice(index, 1);
+
+			result = true;
+		}
+
+		return result;
+	};
+
+	Array.removeAll = function(data) {
+
+		if (data.length) {
+
+			data.length = 0;
+
+			return true;
+		}
+
+		return false;
+	};
+}();
