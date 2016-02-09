@@ -1,16 +1,3 @@
-Array.from = function(data) {
-
-	var i = 0, length = data.length,
-		result = [];
-
-	for (; i < length; ++i) {
-
-		result.push(data[i]);
-	}
-
-	return result;
-};
-
 Array.forEach = function(data, func) {
 
 	var i = 0, length = data.length,
