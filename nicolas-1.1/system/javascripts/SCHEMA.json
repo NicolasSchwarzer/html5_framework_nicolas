@@ -1,5 +1,6 @@
 [
 	"Array",
 	"Object",
-	"Observer"
+	"Observer",
+	"OS"
 ]
