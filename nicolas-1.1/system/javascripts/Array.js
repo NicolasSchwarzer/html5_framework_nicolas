@@ -4,6 +4,8 @@
  *
  * Array API
  *
+ * public static Array isArray(Mixed data);
+ *
  * public static Array from(Array data);
  *
  * public static Mixed|undefined forEach(Mixed[] data, Function func [, Mixed param1 [, ...[, Mixed paramN]]]);
@@ -21,6 +23,14 @@
  * */
 
 ~function() {
+
+	if (!('isArray' in Array)) {
+
+		Array.isArray = function(data) {
+
+			return Object.prototype.toString.call(data) === '[object Array]';
+		};
+	}
 
 	if (!('from' in Array)) {
 
