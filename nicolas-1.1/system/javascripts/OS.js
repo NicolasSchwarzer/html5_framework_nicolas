@@ -1,3 +1,19 @@
+/**
+ *
+ * @author Nicolas Wan
+ *
+ * OS API
+ *
+ * public property Boolean isIOS;
+ *
+ * public property Boolean isAndroid;
+ *
+ * public property Boolean isMac;
+ *
+ * public property Boolean isWindows;
+ *
+ * */
+
 var OS = {};
 
 ~function() {

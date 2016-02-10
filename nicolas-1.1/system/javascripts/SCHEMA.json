@@ -1,6 +1,7 @@
 [
+	"OS",
+	"Feature",
 	"Array",
 	"Object",
-	"Observer",
-	"OS"
+	"Observer"
 ]
