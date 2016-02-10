@@ -3,5 +3,6 @@
 	"Feature",
 	"Array",
 	"Object",
-	"Observer"
+	"Observer",
+	"element.Observer"
 ]
