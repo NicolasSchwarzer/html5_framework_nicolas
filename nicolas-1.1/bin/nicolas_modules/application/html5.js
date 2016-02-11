@@ -9,9 +9,10 @@ require('../array');
 
 function setupComponents(node) {
 
-	var name = node.getAttribute('data-nicolas-component');
+	var name = node.getAttribute('data-nicolas-component'),
+		tagName = node.tagName;
 
-	if (node.tagName === 'DIV' && name) {
+	if (tagName === 'DIV' && name) {
 
 		var compNode = component.getComponentHTML(name);
 
@@ -30,6 +31,12 @@ function setupComponents(node) {
 
 			node.removeAttribute('data-nicolas-component');
 		}
+	}
+	else if(tagName === 'SCRIPT') {
+
+		node.parentElement.removeChild(node);
+
+		return;
 	}
 
 	Array.forEach(node.children, setupComponents);
