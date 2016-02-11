@@ -4,6 +4,7 @@
 	"Reset",
 	"Array",
 	"Object",
+	"String",
 	"Observer",
 	"element.Observer"
 ]
