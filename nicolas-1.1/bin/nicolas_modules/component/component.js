@@ -56,14 +56,23 @@ exports.getComponentCSS = function(name) {
 
 exports.getComponentJavascript = function(name) {
 
-	var targetPath = javascriptPath + String.standardizeName('component.' + name) + '.js';
+	name = String.standardizeName('component.' + name);
+
+	var targetPath = javascriptPath + name + '.js',
+		result = '';
 
 	if (path.isFile(targetPath)) {
 
-		return fs.readFileSync(targetPath);
+		result = fs.readFileSync(targetPath);
 	}
 
-	return '';
+	name = String.capitalizeName(name);
+
+	result = 'function nicolasInitialize' + name + '(exports) {\n\n' + result;
+
+	result = result.replace(/\n/g, '\n\t');
+
+	return result + '\n}\n';
 };
 
 exports.copyResources = function(name, dest) {
