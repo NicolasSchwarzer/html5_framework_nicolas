@@ -14,11 +14,11 @@ if (path.isFile(path.componentHTML5Path() + fileName + '.html')) {
 	return;
 }
 
-fs.writeFileSync(path.componentHTML5Path() + fileName + '.html', '<body container=".">\n\t\n</body>\n');
+fs.writeFileSync(path.componentHTML5Path() + fileName + '.html', '<body container=".">\n\t<p>Welcome To NICOLAS 1.1!</p>\n</body>\n');
 
-fs.writeFileSync(path.componentCSS3Path() + fileName + '.scss', 'div[data-nicolas-component="' + name + '"] {\n\t\n\t\n}\n');
+fs.writeFileSync(path.componentCSS3Path() + fileName + '.scss', '//TODO Write SCSS Code For The Component\n\ndiv[data-nicolas-component="' + name + '"] {\n\t\n\t\n}\n');
 
-fs.writeFileSync(path.componentJavascriptsPath() + fileName + '.js', 'console.log(exports);\n');
+fs.writeFileSync(path.componentJavascriptsPath() + fileName + '.js', '//TODO Write Javascript Code For The Component\n\nconsole.log(exports);\n');
 
 if (hasSrc) {
 
