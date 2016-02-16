@@ -112,6 +112,21 @@ exports.templatesNicolasCompassPath = function() {
 	return basePath + '/templates/.nicolas-compass/';
 };
 
+exports.templatesApplicationHTMLPath = function() {
+
+	return basePath + '/templates/application/application.html';
+};
+
+exports.templatesApplicationSCSSPath = function() {
+
+	return basePath + '/templates/application/application.scss';
+};
+
+exports.templatesApplicationJavascriptPath = function() {
+
+	return basePath + '/templates/application/application.js';
+};
+
 exports.binNicolasCompassPath = function() {
 
 	return basePath + '/bin/';
