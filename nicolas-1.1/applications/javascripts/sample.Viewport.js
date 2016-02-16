@@ -2,6 +2,6 @@
 
 	window.addEventListener2('ready', function() {
 
-		console.log('sample.Viewport');
+		console.log('Sample Viewport');
 	});
 }();

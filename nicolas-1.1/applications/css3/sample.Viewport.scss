@@ -1,20 +1,14 @@
 div[data-nicolas-component="Viewport"] {
+	
+	@include display-flex;
+	@include align-items(center);
 
 	>div {
 
-		height: 300px;
-		line-height: 300px;
-		font-size: 72px;
-		text-align: center;
-	}
-
-	>img {
-
-		display: block;
-		width: 100px;
-		height: 100px;
-		@include border-radius(50%);
-		background-color: #f00;
-		margin: 0 auto;
+		line-height: 50px;
+		font-size: 36px;
+		@include display-flex;
+		@include flex;
+		@include justify-content(center);
 	}
 }
